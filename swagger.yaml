@@ -1,0 +1,145 @@
+openapi: 3.0.0
+info:
+  title: Tests API
+  description: API used for testing
+  version: 1.0.0
+servers:
+  - url: http://localhost/api/v1
+paths:
+  /users:
+    get:
+      summary: List users
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create a user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                gender:
+                  type: string
+                  enum: ['female', 'male']
+                status:
+                  type: string
+                  enum: ['active', 'inactive']
+              required:
+                - name
+                - email
+                - gender
+                - status
+      responses:
+        '200':
+          description: OK
+        '422':
+          description: Unprocessable Entity
+  /users/{userId}:
+    get:
+      summary: Show a user
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: User ID
+      responses:
+        '200':
+          description: OK
+  /users/{userId}/posts:
+    post:
+      summary: Create a new post for a user
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: User ID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                body:
+                  type: string
+              required:
+                - title
+                - body
+      responses:
+        '200':
+          description: OK
+  /posts/{postId}/comments:
+    post:
+      summary: Create a new comment for a post
+      parameters:
+        - in: path
+          name: postId
+          required: true
+          schema:
+            type: integer
+          description: Post ID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                body:
+                  type: string
+              required:
+                - name
+                - email
+                - body
+      responses:
+        '200':
+          description: OK
+  /comment-first-post:
+    post:
+      summary: Create a new comment for the first post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                body:
+                  type: string
+              required:
+                - name
+                - email
+                - body
+      responses:
+        '200':
+          description: OK
+  /comments/{commentId}:
+    delete:
+      summary: Delete comment
+      parameters:
+        - in: path
+          name: commentId
+          required: true
+          schema:
+            type: integer
+          description: Comment ID
+      responses:
+        '200':
+          description: OK
