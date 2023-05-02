@@ -2,6 +2,8 @@
 
 Este projeto faz parte do teste da inicie educação, onde foi solicitado para que fosse construido uma api em laravel para consumir endpoints de users, posts e comments de uma api externa.
 
+Obs: O aquivo .env foi adicionado neste repositório para facilitar os testes, em um repositório real este seria omitido no .gitignore.
+
 ## 🚀 Começando
 
 Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
@@ -42,3 +44,8 @@ Para executar o projeto rode o seguinte comando
 ```
 ./vendor/bin/sail pest
 ```
+
+## 📦 Documentação
+
+A documentação está inclusa na pasta raiz do projeto no arquivo swagger.yaml.
+Para visualizar a documentação copie o conteúdo do arquivo swagger.yaml e cole no [Swagger Editor](https://editor.swagger.io/).
