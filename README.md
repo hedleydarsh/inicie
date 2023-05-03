@@ -42,7 +42,7 @@ Para executar os testes rode o seguinte comando:
 Para executar o projeto rode o seguinte comando
 
 ```
-./vendor/bin/sail pest
+./vendor/bin/sail up
 ```
 
 ## 📦 Documentação
